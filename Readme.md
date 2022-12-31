@@ -14,3 +14,8 @@ podman run --rm \
 ```
 
 After that server should be available at http://localhost:8787/
+
+If needed ufw firewall rule could be added:
+```sh
+ufw allow 8787 comment "Calibre Server"
+```
