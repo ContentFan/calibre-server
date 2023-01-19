@@ -2,6 +2,7 @@
 Description=Calibre server
 
 [Service]
+ExecStartPre=podman rm -i calibre-server
 ExecStart=podman run --rm --name calibre-server -e CALIBRE_USER=<user> -e CALIBRE_PASS=<password> -p 8787:8080 -v <path-to-lib>:/opt/calibre/library localhost/calibre
 ExecStop=podman stop calibre-server
 
