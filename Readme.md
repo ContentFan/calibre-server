@@ -11,7 +11,8 @@ podman run --rm \
     -e CALIBRE_USER=<user> \
     -e CALIBRE_PASS=<password> \
     -p 8787:8080 \
-    -v <path-to-library>:/opt/calibre/library \
+    --userns keep-id \
+    -v <path-to-libraries>:/home/calibre/libraries \
     calibre
 ```
 
