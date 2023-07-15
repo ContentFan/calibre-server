@@ -13,7 +13,7 @@ else:
     for child in LIBS_ROOT.iterdir():
         if child.is_file():
             continue
-        if child.name.startswith('.'):
+        if child.name.startswith("."):
             continue
         if len(list(child.iterdir())) == 0 or (child / "metadata.db").is_file():
             LIBS.append(child)
@@ -35,6 +35,7 @@ with open("adduser.ex", "w") as sources:
             r"^set PASSWORD placeholder", f"set PASSWORD {CALIBRE_PASS}", line
         )
         sources.write(line)
+
 result = run(
     [
         "expect",
@@ -51,8 +52,10 @@ result = run(["./calibredb", "list", *[f"--with-library={x}" for x in LIBS]])
 result.check_returncode()
 
 # 4. Run server
-os.execv(    
-        "./calibre-server",[
+os.execv(
+    "./calibre-server",
+    [
+        "calibre-server",   # https://stackoverflow.com/questions/2904171/first-parameter-of-os-exec
         "--enable-auth",
         "--userdb",
         "users.sqlite",
