@@ -25,7 +25,7 @@ RUN mkdir -p $BASE_DIR && mkdir -p $LIBS_ROOT && mkdir -p $APP_DIR
 
 WORKDIR $APP_DIR
 
-ARG VERSION=6.22.0
+ARG VERSION=7.8.0
 
 RUN curl -s --output - https://download.calibre-ebook.com/$VERSION/calibre-$VERSION-arm64.txz | tar Jxv
 
